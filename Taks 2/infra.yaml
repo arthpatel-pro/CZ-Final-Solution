@@ -67,7 +67,7 @@ metadata:
   name: verify
   labels:
     name: verify
----		
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
