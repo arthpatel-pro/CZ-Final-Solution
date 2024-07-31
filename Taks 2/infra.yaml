@@ -30,7 +30,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-clusterip-service
+  name: my-app-service
 spec:
   selector:
     app: webapp
@@ -88,11 +88,32 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
+---		
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trusted-deployment
+  namespace: verify
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trusted
+  template:
+    metadata:
+      labels:
+        app: trusted
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: webapp-netpol-policy
+  name: my-app-network-policy
   namespace: application
 spec:
   podSelector: 
