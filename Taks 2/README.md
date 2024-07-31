@@ -18,6 +18,10 @@ Solution:
         2) verify      :- verify-deployment and trusted-deployment will deploy here to verify incoming and outgoing traffic.
     
     The Manifest file will deploy 4 pods using same Nginx image. (I was not having sample code that can use caching functionality.). Two pods in each NameSpace.
+        1)my-app-deployment :- Web application will be deployed here. 
+        2)cache-deployment  :- Caching application like redis can be deployed here
+        3)trusted-deployment:- This PODs will be able to access "my-app-service" pods cosidering they are in different namespace.
+        4)verify-deployment :- Pod will not able to connect to my-app-service.
 
     Let's see the solution to each challenge mentioned in the requirements. (all below references are from my-app-network-policy network policy)
 
